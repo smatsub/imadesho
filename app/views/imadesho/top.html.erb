@@ -1,0 +1,49 @@
+
+<div class="hanjatable">
+<p class="topicbold"><最近習った漢字　※直近5件ずつ></p>
+<a class="newhanja" href="/hanja">新規投稿</a>
+ <table>
+  <tr>
+    <th>No.</th>
+    <th>日付</th>
+    <th>漢字例文</th>
+    <th>漢字（読み方）</th>
+    <th>韓国語</th>
+  </tr>
+
+  <% @hanjas.each do |hanja| %>
+  <tr>
+    <td><%= hanja.id %></td>
+    <td><%= hanja.day %></td>
+    <td><%= hanja.hanjajapanese %></td>
+    <td><%= hanja.hanjahiragana%></td>
+    <td class="korean"><%= hanja.hanjakorean %></td>
+  </tr>
+  <% end %>
+ </table>
+ <%= paginate(@hanjas) %>
+</div>
+
+<div class="topic">
+  <p class="topicbold"><先週の議論テーマ></p>
+  <a class="newdiscussion" href="/discussion/new">新規投稿</a>
+
+  <table>
+    <tr>
+    <td>実施日：<%= @discussions.date %></td>
+    </tr>
+    <tr>
+      <td><%= @discussions.title %></td>
+    </tr>
+    <tr>
+      <td>要約（日本語）：<br><%= @discussions.sumjpn %>
+</td>
+    </tr>
+    <tr>
+      <td class="korean">要約（韓国語）：<br><%= @discussions.sumkor %>
+</td>
+    </tr>
+  </table>
+
+</div>
+

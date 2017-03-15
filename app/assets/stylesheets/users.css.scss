@@ -1,0 +1,20 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.name {
+  font-size: 13px;
+  margin-left: 20px;
+  width:150px
+}
+
+.name p {
+  border-bottom: 1px solid black;
+}
+
+.jpnkor {
+  font-family:
+        'Open Sans', Georgia,
+        "ヒラギノ角ゴ ProN W3",
+        "Hiragino Kaku Gothic ProN",
+        SourceHanSansJP-Regular
+}

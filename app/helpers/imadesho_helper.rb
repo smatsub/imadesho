@@ -1,0 +1,2 @@
+module ImadeshoHelper
+end

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Imadesho</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<% if user_signed_in? %>
+
+  <header>
+  <div class="pic">
+    <img src="https://i.gyazo.com/080d20ec474bb9d21daf3e229c1d2869.gif">
+    <p>全羅南道光州の日本語学習サークル　★☆今でしょ！☆★</p>
+  </div>
+
+  <div class="menubar">
+    <ul>
+      <li><a href="/imadesho/top">トップページ</a></li>
+      <li><a href="/hanja/list">漢字課題一覧</a></li>
+      <li><a href="/discussion">議論したテーマ</a></li>
+      <li class="jpnkor"><a href="/users/<%= current_user.id %>">マイページ</a> ID:[<%= current_user.name %>]</li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    </ul>
+    <br>
+  </div>
+  </header>
+
+<%= yield %>
+
+  <footer>
+  <br>
+  Copyright 'Imadesho' 2017
+  </footer>
+
+<% else %>
+
+<%= yield %>
+  <div class="login">
+     <br>
+     <br>
+     <p>ログインが必要です。ログインはこちらから：<%= link_to "<ログイン>", new_user_session_path, class: 'post' %></p>
+     <p class="korean">로그인이 필요합니다. 로그인은 이쪽에서:<%= link_to "<로그인>", new_user_session_path, class: 'post' %></p>
+  </div>
+
+<% end %>
+
+</body>
+</html>

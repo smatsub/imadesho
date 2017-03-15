@@ -1,0 +1,27 @@
+<div class="contents new">
+  <%= form_tag("/hanja/#{@hanja.id}", method: :patch) do %>
+    <h3>
+      投稿した漢字を変更する
+    </h3>
+    <table>
+    <tr>
+    <th>日付</th>
+    <th>漢字例文</th>
+    <th>漢字（読み方）</th>
+    <th>韓国語</th>
+    <th>説明・備考</th>
+  </tr>
+
+  <tr>
+    <td><input placeholder="YYYYMMDDの形で入力して下さい" type="integer" name="day" value="<%= @hanja.day %>"><br></td>
+    <td><textarea cols="30" name="hanjajapanese" placeholder="漢字を含む例文を入力して下さい" rows="3"><%= @hanja.hanjajapanese %></textarea></td>
+    <td><textarea cols="30" name="hanjahiragana" placeholder="例文の読み方を入力して下さい" rows="3"><%= @hanja.hanjahiragana %></textarea></td>
+    <td><textarea cols="30" name="hanjakorean" placeholder="한국말로 입력하세요" rows="3"><%= @hanja.hanjakorean %></textarea></td>
+    <td><textarea cols="30" name="explanation" placeholder="説明があれば入力して下さい" rows="3"><%= @hanja.explanation %></textarea></td>
+  </tr>
+
+
+    </table>
+    <input type="submit" value="入力完了/입력 완료">
+  <% end %>
+</div>

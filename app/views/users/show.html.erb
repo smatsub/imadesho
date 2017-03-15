@@ -1,0 +1,79 @@
+<div class="name">
+<p class="jpnkor">ログインID：<%= @name %></p>
+</div>
+
+<div class="hanjatable">
+<p class="topicbold"><自分が投稿した漢字一覧></p>
+<a class="newhanja" href="/hanja">新規投稿</a>
+ <table>
+  <tr>
+    <th>No.</th>
+    <th>日付</th>
+    <th>漢字例文</th>
+    <th>漢字（読み方）</th>
+    <th>韓国語</th>
+    <th>備考</th>
+    <th>削除</th>
+    <th>編集</th>
+  </tr>
+
+  <% @hanjas.each do |hanja| %>
+  <tr>
+    <td><%= hanja.id %></td>
+    <td><%= hanja.day %></td>
+    <td><%= hanja.hanjajapanese %></td>
+    <td><%= hanja.hanjahiragana%></td>
+    <td class="korean"><%= hanja.hanjakorean %></td>
+    <td><%= hanja.explanation %></td>
+    <td>
+      <% if user_signed_in? && current_user.id == hanja.user_id %>
+      <%= link_to '削除', "/hanja/#{hanja.id}", method: :delete %>
+      <% end %>
+    </td>
+    <td>
+      <% if user_signed_in? && current_user.id == hanja.user_id %>
+      <%= link_to '編集', "/hanja/#{hanja.id}/edit", method: :get %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+ </table>
+
+</div>
+
+<div class="discussiontable">
+<p class="topicbold"><自分が担当した議論一覧></p>
+<a class="newdiscussion" href="/discussion/new">新規投稿</a>
+ <table>
+  <tr>
+    <th>No.</th>
+    <th>日付</th>
+    <th>題材</th>
+    <th>内容（日本語）</th>
+    <th>要約（韓国語）</th>
+    <th>削除</th>
+    <th>編集</th>
+  </tr>
+
+  <% @discussions.each do |discussion| %>
+  <tr>
+    <td><%= discussion.id %></td>
+    <td><%= discussion.date %></td>
+    <td><%= discussion.title %></td>
+    <td><%= discussion.sumjpn %></td>
+    <td class="korean"><%= discussion.sumkor %></td>
+    <td>
+      <% if user_signed_in? && current_user.id == discussion.user_id %>
+      <%= link_to '削除', "/discussion/#{discussion.id}", method: :delete %>
+      <% end %>
+    </td>
+    <td>
+       <% if user_signed_in? && current_user.id == discussion.user_id %>
+       <%= link_to '編集', "/discussion/#{discussion.id}/edit", method: :get %>
+       <% end %>
+    </td>
+  </tr>
+  <% end %>
+ </table>
+
+</div>

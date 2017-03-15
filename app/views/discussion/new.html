@@ -1,0 +1,25 @@
+<div class="contents new">
+  <%= form_tag('/discussion', method: :post) do %>
+    <h3>
+      議論した内容を投稿する
+    </h3>
+    <table>
+    <tr>
+    <th>日付</th>
+    <th>議題</th>
+    <th>内容（日本語）</th>
+    <th>内容（韓国語）</th>
+  </tr>
+
+  <tr>
+    <td><input placeholder="YYYYMMDDの形で入力して下さい" type="integer" name="date"><br></td>
+    <td><textarea cols="30" name="title" placeholder="題名を入力して下さい" rows="2"></textarea></td>
+    <td><textarea cols="45" name="sumjpn" placeholder="話し合った内容を入力して下さい" rows="3"></textarea></td>
+    <td><textarea cols="45" name="sumkor" placeholder="한국말로 입력하세요" rows="3"></textarea></td>
+  </tr>
+
+
+    </table>
+    <input type="submit" value="入力完了/입력 완료">
+  <% end %>
+</div>

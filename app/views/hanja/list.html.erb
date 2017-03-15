@@ -1,0 +1,38 @@
+<div class="hanjatable">
+<p class="topicbold"><漢字一覧></p>
+<a class="newhanja" href="/hanja">新規投稿</a>
+ <table>
+  <tr>
+    <th>No.</th>
+    <th>日付</th>
+    <th>投稿者</th>
+    <th>漢字例文</th>
+    <th>漢字（読み方）</th>
+    <th>韓国語</th>
+    <th>削除</th>
+    <th>編集</th>
+  </tr>
+
+  <% @hanjas.each do |hanja| %>
+  <tr>
+    <td><%= hanja.id %></td>
+    <td><%= hanja.day %></td>
+    <td class="jpnkor"><%= hanja.user.name%></td>
+    <td><%= hanja.hanjajapanese %></td>
+    <td><%= hanja.hanjahiragana%></td>
+    <td class="korean"><%= hanja.hanjakorean %></td>
+    <td>
+    <% if user_signed_in? && current_user.id == hanja.user_id %>
+    <%= link_to '削除', "/hanja/#{hanja.id}", method: :delete %>
+    <% end %>
+    </td>
+    <td>
+    <% if user_signed_in? && current_user.id == hanja.user_id %>
+    <%= link_to '編集', "/hanja/#{hanja.id}/edit", method: :get %>
+    <% end %>
+    </td>
+  </tr>
+  <% end %>
+ </table>
+
+</div>
