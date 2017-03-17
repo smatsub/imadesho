@@ -17,7 +17,7 @@ class HanjaController < ApplicationController
   end
 
   def list
-    @hanjas = Hanja.all.order('id DESC')
+    @hanjas = Hanja.all.order('id DESC').page(params[:page]).per(10)
   end
 
   def destroy
